@@ -149,8 +149,8 @@
  * THERMAL_PROTECTION_HYSTERESIS and/or THERMAL_PROTECTION_PERIOD
  */
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)
-  #define THERMAL_PROTECTION_PERIOD 40        // Seconds
-  #define THERMAL_PROTECTION_HYSTERESIS 4     // Degrees Celsius
+  #define THERMAL_PROTECTION_PERIOD 60        // Seconds
+  #define THERMAL_PROTECTION_HYSTERESIS 10    // Degrees Celsius
 
   //#define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
   #if BOTH(ADAPTIVE_FAN_SLOWING, PIDTEMP)
@@ -177,13 +177,13 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-  #define THERMAL_PROTECTION_BED_PERIOD        50 // Seconds
-  #define THERMAL_PROTECTION_BED_HYSTERESIS     2 // Degrees Celsius
+  #define THERMAL_PROTECTION_BED_PERIOD        60 // Seconds
+  #define THERMAL_PROTECTION_BED_HYSTERESIS     5 // Degrees Celsius
 
   /**
    * As described above, except for the bed (M140/M190/M303).
    */
-  #define WATCH_BED_TEMP_PERIOD                60 // Seconds
+  #define WATCH_BED_TEMP_PERIOD               180 // Seconds
   #define WATCH_BED_TEMP_INCREASE               2 // Degrees Celsius
 #endif
 
@@ -271,7 +271,7 @@
  * Also, if the temperature is set to a value below mintemp, it will not be changed by autotemp.
  * On an Ultimaker, some initial testing worked with M109 S215 B260 F1 in the start.gcode
  */
-#define AUTOTEMP
+//#define AUTOTEMP
 #if ENABLED(AUTOTEMP)
   #define AUTOTEMP_OLDWEIGHT 0.98
 #endif
@@ -341,9 +341,9 @@
  * The fan turns on automatically whenever any driver is enabled and turns
  * off (or reduces to idle speed) shortly after drivers are turned off.
  */
-#define USE_CONTROLLER_FAN // Malyan M200: uncomment if you use FAN2 to cool the board (original)
+//#define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
-  #define CONTROLLER_FAN_PIN MALYAN_FAN2_PIN // Set a custom pin for the controller fan
+  //#define CONTROLLER_FAN_PIN -1        // Set a custom pin for the controller fan
   //#define CONTROLLER_FAN_USE_Z_ONLY    // With this option only the Z axis is considered
   #define CONTROLLERFAN_SPEED_MIN      0 // (0-255) Minimum speed. (If set below this value the fan is turned off.)
   #define CONTROLLERFAN_SPEED_ACTIVE 255 // (0-255) Active speed, used when any motor is enabled
@@ -419,9 +419,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-//#define FAN_PIN MALYAN_FAN1_PIN // Malyan M200: uncomment if you use FAN1 to cool the part and FAN2 to cool the extruder
-//#define E0_AUTO_FAN_PIN MALYAN_FAN2_PIN // Malyan M200: uncomment if you use FAN1 to cool the part and FAN2 to cool the extruder
-#define E0_AUTO_FAN_PIN MALYAN_FAN1_PIN // Malyan M200: uncomment if you use FAN1 to cool the extruder and the part (original)
+#define E0_AUTO_FAN_PIN -1
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -471,7 +469,7 @@
 
 // @section extras
 
-#define Z_LATE_ENABLE // Enable Z the last moment. Needed if your Z driver overheats.
+//#define Z_LATE_ENABLE // Enable Z the last moment. Needed if your Z driver overheats.
 
 // Employ an external closed loop controller. Override pins here if needed.
 //#define EXTERNAL_CLOSED_LOOP_CONTROLLER
@@ -1036,7 +1034,7 @@
 
   // The standard SD detect circuit reads LOW when media is inserted and HIGH when empty.
   // Enable this option and set to HIGH if your SD cards are incorrectly detected.
-  //#define SD_DETECT_STATE HIGH
+  #define SD_DETECT_STATE LOW
 
   #define SD_FINISHED_STEPPERRELEASE true          // Disable steppers when SD Print is finished
   #define SD_FINISHED_RELEASECOMMAND "M84 X Y Z E" // You might want to keep the Z enabled so your bed stays in place.
@@ -1050,6 +1048,10 @@
   //#define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
 
   #define EVENT_GCODE_SD_STOP "G28XY"       // G-code to run on Stop Print (e.g., "G28XY" or "G27")
+
+  #if ENABLED(PRINTER_EVENT_LEDS)
+    #define PE_LEDS_COMPLETED_TIME  (30*60) // (seconds) Time to keep the LED "done" color before restoring normal illumination
+  #endif
 
   /**
    * Continue after Power-Loss (Creality3D)
@@ -1114,7 +1116,7 @@
   #endif
 
   // This allows hosts to request long names for files and folders with M33
-  #define LONG_FILENAME_HOST_SUPPORT
+  //#define LONG_FILENAME_HOST_SUPPORT
 
   // Enable this option to scroll long filenames in the SD card menu
   //#define SCROLL_LONG_FILENAMES
@@ -1463,7 +1465,7 @@
  *
  * Warning: Does not respect endstops!
  */
-//#define BABYSTEPPING
+#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
   //#define INTEGRATED_BABYSTEPPING         // EXPERIMENTAL integration of babystepping into the Stepper ISR
   //#define BABYSTEP_WITHOUT_HOMING
