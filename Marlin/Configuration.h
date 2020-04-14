@@ -690,7 +690,7 @@
 #define Z_DRIVER_TYPE  DRV8825
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
-#define Z2_DRIVER_TYPE DRV8825
+//#define Z2_DRIVER_TYPE DRV8825
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
 #define E0_DRIVER_TYPE DRV8825
@@ -745,7 +745,8 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 98.42, 99.7, 800, 261.75 }
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 96.79, 100, 800, 261.75 } //normal outer shell, inner smaller than needed
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 97.5, 100, 800, 752.387 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1065,7 +1066,7 @@
 // @section extruder
 
 #define DISABLE_E false             // For all extruders
-//#define DISABLE_INACTIVE_EXTRUDER   // Keep only the active extruder enabled
+#define DISABLE_INACTIVE_EXTRUDER   // Keep only the active extruder enabled
 
 // @section machine
 
