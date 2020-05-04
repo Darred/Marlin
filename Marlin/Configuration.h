@@ -533,7 +533,6 @@ G1 F200 E3 ;подать в экструдер 5мм филамента.
   #define DEFAULT_Kp 17.68
   #define DEFAULT_Ki 1.25
   #define DEFAULT_Kd 62.71
-
 #endif // PIDTEMP
 
 //===========================================================================
@@ -586,7 +585,6 @@ G1 F200 E3 ;подать в экструдер 5мм филамента.
 #define DEFAULT_bedKp 169.11
 #define DEFAULT_bedKi 27.51
 #define DEFAULT_bedKd 692.97
-
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
 
