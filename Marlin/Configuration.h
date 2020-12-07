@@ -529,9 +529,9 @@ G1 F200 E3 ;подать в экструдер 5мм филамента.
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp  17.68
-    #define DEFAULT_Ki  1.25
-    #define DEFAULT_Kd  62.71
+    #define DEFAULT_Kp 8.86
+    #define DEFAULT_Ki 0.52
+    #define DEFAULT_Kd 37.78
   #endif
 #endif // PIDTEMP
 
@@ -570,9 +570,9 @@ G1 F200 E3 ;подать в экструдер 5мм филамента.
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  #define DEFAULT_bedKp 133.05
+  #define DEFAULT_bedKi 21.00
+  #define DEFAULT_bedKd 561.99
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -1017,7 +1017,7 @@ G1 F200 E3 ;подать в экструдер 5мм филамента.
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 42, 19, -0.19 }
+#define NOZZLE_TO_PROBE_OFFSET { 42, 19, 0.1 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1153,12 +1153,12 @@ G1 F200 E3 ;подать в экструдер 5мм филамента.
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 220
+#define X_BED_SIZE 210
 #define Y_BED_SIZE 190
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS -17
-#define Y_MIN_POS -50
+#define Y_MIN_POS -22
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
